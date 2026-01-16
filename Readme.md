@@ -1,109 +1,121 @@
-Face Detection Project using OpenCV
-It's an entire face detection system developed using the Haar Cascade classifier from OpenCV. This project facilitates face detection functionality in both image, video, and webcam sources.
- Features
-•	Face detection in static images
-•	Face recognition in video files
-•	Real-time face detection using webcam
-•	Image cropping tool, cropping the image exclusively on a face region
-•	Customizable parameters of detection.
-•	Custom support for Haar Cascade classifiers
-•	Easy-to-use Python API
-•	Command-line interface 
- Structure of the Project
+# Face Detection Project using OpenCV
 
+A complete face detection system built with OpenCV's Haar Cascade classifier. This project supports face detection in images, videos, and real-time webcam streams.
 
- 
-image_detection
+## Features
+
+- ✅ Face detection in static images
+- ✅ Face detection in video files
+- ✅ Real-time face detection from webcam
+- ✅ Face cropping tool - extract only face regions from photos
+- ✅ Customizable detection parameters
+- ✅ Support for custom Haar Cascade classifiers
+- ✅ Easy-to-use Python API
+- ✅ Command-line interface
+
+## Project Structure
+
+```
+image_detection_project/
 ├── data/
-|
-     |── image/           # Input/output images
-├── models/          # Custom Haar Cascade models
+│   ├── image/          # Input/output images
+│   ├── models/         # Custom Haar Cascade models
 │   └── videos/         # Input/output videos
 ├── src/
-├── main.py            # Main entry point with CLI
-|       ├── detection.py  # Face detection module
-├── models/           # Model files
-├── utils/          # Utility functions
+│   ├── main.py         # Main entry point with CLI
+│   ├── detection.py    # Face detection module
+│   ├── models/         # Model files
+│   └── utils/          # Utility functions
 │       ├── __init__.py
 │       └── image_utils.py
 ├── requirements.txt    # Python dependencies
-├── README.md            # This File
-
-
+└── Readme.md          # This file
+```
 
 ## Installation
-1. Navigate to or clone the project repository.
-bash
-cd image_detection_project
 
-2. Create virtual environment (Recommended):
-```bash
-python -m venv venv
-# On Windows
-venv
-# On Linux/Mac systems
-source venv/bin
-``
-3. **Install dependencies
-```bash
-pip install -r requirements.txt
-***
+1. **Clone or navigate to the project directory:**
+   ```bash
+   cd image_detection_project
+   ```
+
+2. **Create a virtual environment (recommended):**
+   ```bash
+   python -m venv venv
+   
+   # On Windows
+   venv\Scripts\activate
+   
+   # On Linux/Mac
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 ## Usage
-### Command Line Interface
-#### Detect faces in an image:
-bash
-python src/main.py --mode image --input data/image/photo.jpg --output data
-Precision:
-#### Detect Faces in a Video:
-`_op
 
-python src/main.py --mode video --input data/videos/video.mp4 --output
-It
+### Command-Line Interface
+
+#### Detect faces in an image:
+```bash
+python src/main.py --mode image --input data/image/photo.jpg --output data/image/output.jpg
+```
+
+#### Detect faces in a video:
+```bash
+python src/main.py --mode video --input data/videos/video.mp4 --output data/videos/output.mp4
+```
+
 #### Real-time webcam detection:
 ```bash
 python src/main.py --mode webcam
-Saura
-#### Advanced options:
-bash
-
-python src/main.py --mode image \
-
---input data/image/photo.jpg
---output data/image/output.jpg
-
---scale-factor 1.
-
---min_neighbors 6 \
---min-size 50
 ```
+
+#### Advanced options:
+```bash
+python src/main.py --mode image \
+    --input data/image/photo.jpg \
+    --output data/image/output.jpg \
+    --scale-factor 1.2 \
+    --min-neighbors 6 \
+    --min-size 50 50
+```
+
 ### Python API
 
-#### Example use cases:
-
-bisect
+#### Basic usage:
+```python
 from src.detection import FaceDetector
 
 # Initialize detector
-    detector
 detector = FaceDetector()
-# Recognize the face in the image
-annotated_image, faces = detector.process_image
-"data
-output_path
 
+# Detect faces in an image
+annotated_image, faces = detector.process_image(
+    'data/image/photo.jpg',
+    output_path='data/image/output.jpg'
 )
-print(f'Detected {
 
+print(f"Detected {len(faces)} face(s)")
 ```
-function
+
 #### Custom detection parameters:
+```python
+detector = FaceDetector()
 
+# Detect with custom parameters
+faces = detector.detect_faces(
+    image,
+    scale_factor=1.2,
+    min_neighbors=6,
+    min_size=(50, 50)
+)
 
-
--lndxA detector = FaceDetector() # Custom detection with parameters
-detect_custom_parameters() faces = detector.detect_faces( image, scale_factor min_neighbors min_size=(50 ) # Draw bounding boxes
-    fig, annotated_image = detector.draw_faces(image, </font - Processing images: ```python detector = FaceDetector()
-otated_image = detector.draw_faces(image, faces)
+# Draw bounding boxes
+annotated_image = detector.draw_faces(image, faces)
 ```
 
 #### Video processing:
@@ -267,26 +279,35 @@ python classify_dataset.py
 python classify_dataset.py --min-face-size 80 80 --scale-factor 1.1 --min-neighbors 5
 ```
 
-Troubleshooting
-Problem: "Haar Cascade file not found"
+## Troubleshooting
 
-**Solution**: This functionality is available in OpenCV. When done manually, one needs to make sure of the right path to the cascade.
+### Issue: "Haar Cascade file not found"
+- **Solution**: The default cascade is included with OpenCV. If using a custom cascade, ensure the path is correct.
 
-### Problem: Poor detection accuracy
+### Issue: Poor detection accuracy
+- **Solution**: Adjust `scale_factor` (try 1.05-1.3) and `min_neighbors` (try 3-7). Ensure good lighting in images.
 
-- **Solution**: Use the `scale_factor` value between 1.05 to 1.3 and `min_neighbors` value between 3
+### Issue: Webcam not working
+- **Solution**: Check camera permissions and try different camera indices (0, 1, 2, etc.).
 
-### Problem: Webcam not working
+### Issue: Video processing is slow
+- **Solution**: Increase `min_size` to skip smaller faces, or reduce video resolution.
 
-- **Solution**: Try different camera numbers (0, 1, 2, etc.) to see if camera permissions are working.
-Problem:  Video processing takes too long
-In many systems
+## Requirements
 
-**Solution**: Use a larger `min_size` to ignore smaller faces or decrease video resolution.
-Requirements
-	Python 3.7
-	OpenCV 4.8.0+
-	NumPy 1.24.0+
-License
-This project is open source. It can be used for educational purposes. # Contributing Feel free to report bugs, fork the repository and make pull requests for any kind of improvement. ## Acknowledgments
- Enviro: Constructed using OpenCV's Haar Cascade - Employing the pre-defined frontal face cascade in OpenCV.
+- Python 3.7+
+- OpenCV 4.8.0+
+- NumPy 1.24.0+
+
+## License
+
+This project is open source and available for educational purposes.
+
+## Contributing
+
+Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+
+## Acknowledgments
+
+- Built with OpenCV's Haar Cascade classifier
+- Uses the default frontal face cascade included with OpenCV
