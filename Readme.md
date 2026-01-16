@@ -1,121 +1,106 @@
-# Face Detection Project using OpenCV
-
-A complete face detection system built with OpenCV's Haar Cascade classifier. This project supports face detection in images, videos, and real-time webcam streams.
-
-## Features
-
-- ✅ Face detection in static images
-- ✅ Face detection in video files
-- ✅ Real-time face detection from webcam
-- ✅ Face cropping tool - extract only face regions from photos
-- ✅ Customizable detection parameters
-- ✅ Support for custom Haar Cascade classifiers
-- ✅ Easy-to-use Python API
-- ✅ Command-line interface
-
-## Project Structure
-
-```
-image_detection_project/
+Face Detection Project using OpenCV
+It's an entire face detection system developed using the Haar Cascade classifier from OpenCV. This project facilitates face detection functionality in both image, video, and webcam sources.
+ Features
+•	Face detection in static images
+•	Face recognition in video files
+•	Real-time face detection using webcam
+•	Image cropping tool, cropping the image exclusively on a face region
+•	Customizable parameters of detection.
+•	Custom support for Haar Cascade classifiers
+•	Easy-to-use Python API
+•	Command-line interface 
+ Structure of the Project
+image_detection
 ├── data/
-│   ├── image/          # Input/output images
-│   ├── models/         # Custom Haar Cascade models
+|
+     |── image/           # Input/output images
+├── models/          # Custom Haar Cascade models
 │   └── videos/         # Input/output videos
 ├── src/
-│   ├── main.py         # Main entry point with CLI
-│   ├── detection.py    # Face detection module
-│   ├── models/         # Model files
-│   └── utils/          # Utility functions
+├── main.py            # Main entry point with CLI
+|       ├── detection.py  # Face detection module
+├── models/           # Model files
+├── utils/          # Utility functions
 │       ├── __init__.py
 │       └── image_utils.py
 ├── requirements.txt    # Python dependencies
-└── Readme.md          # This file
-```
+├── README.md            # This File
+
+
 
 ## Installation
-
-1. **Clone or navigate to the project directory:**
-   ```bash
-   cd image_detection_project
-   ```
-
-2. **Create a virtual environment (recommended):**
-   ```bash
-   python -m venv venv
-   
-   # On Windows
-   venv\Scripts\activate
-   
-   # On Linux/Mac
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
+1. Navigate to or clone the project repository.
+bash
+cd image_detection_project
+A
+2. Create virtual environment (Recommended):
+```bash
+python -m venv venv
+# On Windows
+venv
+# On Linux/Mac systems
+source venv/bin
+``
+3. **Install dependencies
+```bash
+pip install -r requirements.txt
+***
 ## Usage
-
-### Command-Line Interface
-
+### Command Line Interface
 #### Detect faces in an image:
-```bash
-python src/main.py --mode image --input data/image/photo.jpg --output data/image/output.jpg
-```
+bash
+python src/main.py --mode image --input data/image/photo.jpg --output data
+Precision:
+#### Detect Faces in a Video:
+`_op
 
-#### Detect faces in a video:
-```bash
-python src/main.py --mode video --input data/videos/video.mp4 --output data/videos/output.mp4
-```
-
+python src/main.py --mode video --input data/videos/video.mp4 --output
+It
 #### Real-time webcam detection:
 ```bash
 python src/main.py --mode webcam
-```
-
+Saura
 #### Advanced options:
-```bash
-python src/main.py --mode image \
-    --input data/image/photo.jpg \
-    --output data/image/output.jpg \
-    --scale-factor 1.2 \
-    --min-neighbors 6 \
-    --min-size 50 50
-```
+bash
 
+python src/main.py --mode image \
+
+--input data/image/photo.jpg
+--output data/image/output.jpg
+
+--scale-factor 1.
+
+--min_neighbors 6 \
+--min-size 50
+```
 ### Python API
 
-#### Basic usage:
-```python
+#### Example use cases:
+
+bisect
 from src.detection import FaceDetector
 
 # Initialize detector
+    detector
 detector = FaceDetector()
+# Recognize the face in the image
+annotated_image, faces = detector.process_image
+"data
+output_path
 
-# Detect faces in an image
-annotated_image, faces = detector.process_image(
-    'data/image/photo.jpg',
-    output_path='data/image/output.jpg'
 )
+print(f'Detected {
 
-print(f"Detected {len(faces)} face(s)")
 ```
-
+function
 #### Custom detection parameters:
-```python
-detector = FaceDetector()
 
-# Detect with custom parameters
-faces = detector.detect_faces(
-    image,
-    scale_factor=1.2,
-    min_neighbors=6,
-    min_size=(50, 50)
-)
 
-# Draw bounding boxes
-annotated_image = detector.draw_faces(image, faces)
+
+-lndxA detector = FaceDetector() # Custom detection with parameters
+detect_custom_parameters() faces = detector.detect_faces( image, scale_factor min_neighbors min_size=(50 ) # Draw bounding boxes
+    fig, annotated_image = detector.draw_faces(image, </font - Processing images: ```python detector = FaceDetector()
+otated_image = detector.draw_faces(image, faces)
 ```
 
 #### Video processing:
