@@ -10,6 +10,9 @@ It's an entire face detection system developed using the Haar Cascade classifier
 •	Easy-to-use Python API
 •	Command-line interface 
  Structure of the Project
+
+
+ 
 image_detection
 ├── data/
 |
