@@ -1,17 +1,16 @@
 # Face Detection Project using OpenCV
+It's an entire face detection system developed using the Haar Cascade classifier from OpenCV. This project facilitates face detection functionality in both image, video, and webcam sources.
 
-A complete face detection system built with OpenCV's Haar Cascade classifier. This project supports face detection in images, videos, and real-time webcam streams.
+ ## Features
+   •	Face detection in static images
+   •	Face recognition in video files
+   •	Real-time face detection using webcam
+   •	Image cropping tool, cropping the image exclusively on a face region
+   •	Customizable parameters of detection.
+   •	Custom support for Haar Cascade classifiers
+   •	Easy-to-use Python API
+   •	Command-line interface 
 
-## Features
-
-- ✅ Face detection in static images
-- ✅ Face detection in video files
-- ✅ Real-time face detection from webcam
-- ✅ Face cropping tool - extract only face regions from photos
-- ✅ Customizable detection parameters
-- ✅ Support for custom Haar Cascade classifiers
-- ✅ Easy-to-use Python API
-- ✅ Command-line interface
 
 ## Project Structure
 
