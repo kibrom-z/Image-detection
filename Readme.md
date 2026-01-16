@@ -35,7 +35,7 @@ image_detection
 1. Navigate to or clone the project repository.
 bash
 cd image_detection_project
-A
+
 2. Create virtual environment (Recommended):
 ```bash
 python -m venv venv
@@ -267,35 +267,26 @@ python classify_dataset.py
 python classify_dataset.py --min-face-size 80 80 --scale-factor 1.1 --min-neighbors 5
 ```
 
-## Troubleshooting
+Troubleshooting
+Problem: "Haar Cascade file not found"
 
-### Issue: "Haar Cascade file not found"
-- **Solution**: The default cascade is included with OpenCV. If using a custom cascade, ensure the path is correct.
+**Solution**: This functionality is available in OpenCV. When done manually, one needs to make sure of the right path to the cascade.
 
-### Issue: Poor detection accuracy
-- **Solution**: Adjust `scale_factor` (try 1.05-1.3) and `min_neighbors` (try 3-7). Ensure good lighting in images.
+### Problem: Poor detection accuracy
 
-### Issue: Webcam not working
-- **Solution**: Check camera permissions and try different camera indices (0, 1, 2, etc.).
+- **Solution**: Use the `scale_factor` value between 1.05 to 1.3 and `min_neighbors` value between 3
 
-### Issue: Video processing is slow
-- **Solution**: Increase `min_size` to skip smaller faces, or reduce video resolution.
+### Problem: Webcam not working
 
-## Requirements
+- **Solution**: Try different camera numbers (0, 1, 2, etc.) to see if camera permissions are working.
+Problem:  Video processing takes too long
+In many systems
 
-- Python 3.7+
-- OpenCV 4.8.0+
-- NumPy 1.24.0+
-
-## License
-
-This project is open source and available for educational purposes.
-
-## Contributing
-
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
-
-## Acknowledgments
-
-- Built with OpenCV's Haar Cascade classifier
-- Uses the default frontal face cascade included with OpenCV
+**Solution**: Use a larger `min_size` to ignore smaller faces or decrease video resolution.
+Requirements
+	Python 3.7
+	OpenCV 4.8.0+
+	NumPy 1.24.0+
+License
+This project is open source. It can be used for educational purposes. # Contributing Feel free to report bugs, fork the repository and make pull requests for any kind of improvement. ## Acknowledgments
+ Enviro: Constructed using OpenCV's Haar Cascade - Employing the pre-defined frontal face cascade in OpenCV.
